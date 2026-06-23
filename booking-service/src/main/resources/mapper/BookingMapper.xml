@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.room_booking.booking_service.mapper.BookingMapper">
+
+    <insert id="insert"
+            parameterType="com.room_booking.booking_service.model.db.Booking"
+            useGeneratedKeys="true"
+            keyProperty="id">
+
+        INSERT INTO bookings (
+            room_id,
+            check_in_date,
+            check_out_date,
+            adults,
+            children,
+            total_price,
+            status
+        )
+        VALUES (
+            #{roomId},
+            #{checkInDate},
+            #{checkOutDate},
+            #{adults},
+            #{children},
+            #{totalPrice},
+            #{status}
+        )
+
+    </insert>
+
+    <select id="findById"
+            parameterType="long"
+            resultType="com.room_booking.booking_service.model.db.Booking">
+
+        SELECT
+            id,
+            room_id AS roomId,
+            check_in_date AS checkInDate,
+            check_out_date AS checkOutDate,
+            adults,
+            children,
+            total_price AS totalPrice,
+            status,
+            created_at AS createdAt
+        FROM bookings
+        WHERE id = #{id}
+
+    </select>
+
+</mapper>
