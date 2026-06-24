@@ -22,5 +22,8 @@ public class BookingEventProducer {
                 TOPIC,
                 String.valueOf(event.getBookingId()),
                 event);
+        System.out.println(
+                "[Booking Service] Published booking event for room: "
+                        + event.getRoomId());
     }
 }

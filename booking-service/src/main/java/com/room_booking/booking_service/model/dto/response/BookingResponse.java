@@ -9,7 +9,6 @@ public record BookingResponse (
     String checkOutDate,
     int adults,
     int children,
-    String totalPrice,
     String status
 ) {
     public static BookingResponse from(Booking booking) {
@@ -20,7 +19,6 @@ public record BookingResponse (
             booking.getCheckOutDate().toString(),
             booking.getAdults(),
             booking.getChildren(),
-            booking.getTotalPrice().toString(),
             booking.getStatus()
         );
     }

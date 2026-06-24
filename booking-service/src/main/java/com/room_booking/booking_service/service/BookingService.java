@@ -42,7 +42,6 @@ public class BookingService {
         event.setCheckOutDate(booking.getCheckOutDate());
         event.setAdults(booking.getAdults());
         event.setChildren(booking.getChildren());
-        event.setTotalPrice(booking.getTotalPrice());
         event.setStatus(booking.getStatus());
 
 

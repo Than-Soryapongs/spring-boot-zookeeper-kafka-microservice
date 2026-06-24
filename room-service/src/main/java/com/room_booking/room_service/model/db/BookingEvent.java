@@ -1,20 +1,18 @@
-package com.room_booking.booking_service.model.db;
+package com.room_booking.room_service.model.db;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class Booking {
-    private long id;
+public class BookingEvent {
+    private long bookingId;
     private String roomId;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private int adults;
     private int children;
     private String status;
-    private LocalDateTime createdAt;
 
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
+    public long getBookingId() { return bookingId; }
+    public void setBookingId(long bookingId) { this.bookingId = bookingId; }
 
     public String getRoomId() { return roomId; }
     public void setRoomId(String roomId) { this.roomId = roomId; }
@@ -34,6 +32,4 @@ public class Booking {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

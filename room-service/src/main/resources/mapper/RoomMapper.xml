@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.room_booking.room_service.mapper.RoomMapper">
+
+    <insert id="insert"
+            parameterType="com.room_booking.room_service.model.db.Room"
+            useGeneratedKeys="true"
+            keyProperty="id">
+
+        INSERT INTO rooms (
+            room_id,
+            room_type,
+            capacity,
+            price_per_night,
+            description,
+            amenities,
+            status
+        )
+        VALUES (
+            #{roomId},
+            #{roomType},
+            #{capacity},
+            #{pricePerNight},
+            #{description},
+            #{amenities},
+            #{status}
+        )
+
+    </insert>
+
+    <select id="findByRoomId"
+            parameterType="string"
+            resultType="com.room_booking.room_service.model.db.Room">
+
+        SELECT
+            id,
+            room_id AS roomId,
+            room_type AS roomType,
+            capacity,
+            price_per_night AS pricePerNight,
+            description,
+            amenities,
+            status,
+            created_at AS createdAt,
+            updated_at AS updatedAt
+        FROM rooms
+        WHERE room_id = #{roomId}
+
+    </select>
+
+    <update id="updateRoomStatus">
+
+        UPDATE rooms
+        SET status = #{status}
+        WHERE room_id = #{roomId}
+
+    </update>
+
+</mapper>
