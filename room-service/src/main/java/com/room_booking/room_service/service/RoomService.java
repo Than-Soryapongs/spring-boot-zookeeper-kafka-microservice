@@ -3,9 +3,10 @@ package com.room_booking.room_service.service;
 import org.springframework.stereotype.Service;
 
 import com.room_booking.room_service.mapper.RoomMapper;
-import com.room_booking.room_service.model.db.Room;
 import com.room_booking.room_service.model.dto.request.RoomRequest;
 import com.room_booking.room_service.model.dto.response.RoomResponse;
+import com.room_booking.room_service.model.entity.Room;
+import com.room_booking.room_service.model.enums.RoomStatus;
 
 @Service
 public class RoomService {
@@ -27,7 +28,7 @@ public class RoomService {
         room.setDescription(request.getDescription());
         room.setAmenities(request.getAmenities());
 
-        room.setStatus("AVAILABLE");
+        room.setStatus(RoomStatus.AVAILABLE); // Set default status to AVAILABLE
 
         roomMapper.insert(room);
 
@@ -48,7 +49,7 @@ public class RoomService {
         return RoomResponse.from(room);
     }
 
-    public void updateRoomStatus(String roomId, String status) {
+    public void updateRoomStatus(String roomId, RoomStatus status) {
 
         Room room = roomMapper.findByRoomId(roomId);
 

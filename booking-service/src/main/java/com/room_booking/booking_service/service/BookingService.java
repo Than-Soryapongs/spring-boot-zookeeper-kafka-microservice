@@ -1,13 +1,16 @@
 package com.room_booking.booking_service.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.stereotype.Service;
 
 import com.room_booking.booking_service.kafka.BookingEventProducer;
 import com.room_booking.booking_service.mapper.BookingMapper;
-import com.room_booking.booking_service.model.db.Booking;
-import com.room_booking.booking_service.model.db.BookingEvent;
 import com.room_booking.booking_service.model.dto.request.BookingRequest;
 import com.room_booking.booking_service.model.dto.response.BookingResponse;
+import com.room_booking.booking_service.model.entity.Booking;
+import com.room_booking.booking_service.model.entity.BookingEvent;
+import com.room_booking.booking_service.model.enums.BookingStatus;
 
 @Service
 public class BookingService {
@@ -21,6 +24,10 @@ public class BookingService {
     }
 
     public BookingResponse createBooking(BookingRequest request) {
+
+        if (!request.getCheckOutDate().isAfter(request.getCheckInDate())) {
+            throw new IllegalArgumentException("Check-out date must be after check-in date");
+        }
         
         // Request -> Entity
         Booking booking = new Booking();
@@ -29,8 +36,9 @@ public class BookingService {
         booking.setCheckOutDate(request.getCheckOutDate());
         booking.setAdults(request.getAdults());
         booking.setChildren(request.getChildren());
+        booking.setTotalPrice(BigDecimal.ZERO);
 
-        booking.setStatus("PENDING");
+        booking.setStatus(BookingStatus.PENDING);
 
         bookingMapper.insert(booking);
 

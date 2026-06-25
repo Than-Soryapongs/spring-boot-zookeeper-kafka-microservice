@@ -3,7 +3,8 @@ package com.room_booking.room_service.model.dto.response;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.room_booking.room_service.model.db.Room;
+import com.room_booking.room_service.model.entity.Room;
+import com.room_booking.room_service.model.enums.RoomStatus;
 
 public record RoomResponse(
     long id,
@@ -13,7 +14,7 @@ public record RoomResponse(
     BigDecimal pricePerNight,
     String description,
     String amenities,
-    String status,
+    RoomStatus status,
     LocalDateTime createdAt,
     LocalDateTime updatedAt
 ) {

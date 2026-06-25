@@ -1,7 +1,10 @@
-package com.room_booking.booking_service.model.db;
+package com.room_booking.booking_service.model.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import com.room_booking.booking_service.model.enums.BookingStatus;
 
 public class Booking {
     private long id;
@@ -10,7 +13,8 @@ public class Booking {
     private LocalDate checkOutDate;
     private int adults;
     private int children;
-    private String status;
+    private BigDecimal totalPrice;
+    private BookingStatus status;
     private LocalDateTime createdAt;
 
     public long getId() { return id; }
@@ -31,8 +35,11 @@ public class Booking {
     public int getChildren() { return children; }
     public void setChildren(int children) { this.children = children; }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public BigDecimal getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(BigDecimal totalPrice) { this.totalPrice = totalPrice; }
+
+    public BookingStatus getStatus() { return status; }
+    public void setStatus(BookingStatus status) { this.status = status; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

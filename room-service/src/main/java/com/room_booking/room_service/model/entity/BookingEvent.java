@@ -1,4 +1,4 @@
-package com.room_booking.booking_service.model.db;
+package com.room_booking.room_service.model.entity;
 
 import java.time.LocalDate;
 

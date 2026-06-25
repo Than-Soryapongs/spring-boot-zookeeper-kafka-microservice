@@ -1,6 +1,9 @@
 package com.room_booking.booking_service.model.dto.response;
 
-import com.room_booking.booking_service.model.db.Booking;
+import java.math.BigDecimal;
+
+import com.room_booking.booking_service.model.entity.Booking;
+import com.room_booking.booking_service.model.enums.BookingStatus;
 
 public record BookingResponse (
     long id,
@@ -9,7 +12,8 @@ public record BookingResponse (
     String checkOutDate,
     int adults,
     int children,
-    String status
+    BigDecimal totalPrice,
+    BookingStatus status
 ) {
     public static BookingResponse from(Booking booking) {
         return new BookingResponse(
@@ -19,6 +23,7 @@ public record BookingResponse (
             booking.getCheckOutDate().toString(),
             booking.getAdults(),
             booking.getChildren(),
+            booking.getTotalPrice(),
             booking.getStatus()
         );
     }

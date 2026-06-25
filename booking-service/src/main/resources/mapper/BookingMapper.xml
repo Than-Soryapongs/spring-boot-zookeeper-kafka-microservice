@@ -5,7 +5,7 @@
 <mapper namespace="com.room_booking.booking_service.mapper.BookingMapper">
 
     <insert id="insert"
-            parameterType="com.room_booking.booking_service.model.db.Booking"
+            parameterType="com.room_booking.booking_service.model.entity.Booking"
             useGeneratedKeys="true"
             keyProperty="id">
 
@@ -15,6 +15,7 @@
             check_out_date,
             adults,
             children,
+            total_price,
             status
         )
         VALUES (
@@ -23,6 +24,7 @@
             #{checkOutDate},
             #{adults},
             #{children},
+            #{totalPrice},
             #{status}
         )
 
@@ -30,7 +32,7 @@
 
     <select id="findById"
             parameterType="long"
-            resultType="com.room_booking.booking_service.model.db.Booking">
+            resultType="com.room_booking.booking_service.model.entity.Booking">
 
         SELECT
             id,
@@ -39,11 +41,29 @@
             check_out_date AS checkOutDate,
             adults,
             children,
+            total_price AS totalPrice,
             status,
             created_at AS createdAt
         FROM bookings
         WHERE id = #{id}
 
     </select>
+
+    <update id="updateStatus">
+
+        UPDATE bookings
+        SET status = #{status}
+        WHERE id = #{bookingId}
+
+    </update>
+
+    <update id="updateStatusAndTotalPrice">
+
+        UPDATE bookings
+        SET status = #{status},
+            total_price = #{totalPrice}
+        WHERE id = #{bookingId}
+
+    </update>
 
 </mapper>

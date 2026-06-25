@@ -5,7 +5,7 @@
 <mapper namespace="com.room_booking.room_service.mapper.RoomMapper">
 
     <insert id="insert"
-            parameterType="com.room_booking.room_service.model.db.Room"
+            parameterType="com.room_booking.room_service.model.entity.Room"
             useGeneratedKeys="true"
             keyProperty="id">
 
@@ -32,7 +32,7 @@
 
     <select id="findByRoomId"
             parameterType="string"
-            resultType="com.room_booking.room_service.model.db.Room">
+            resultType="com.room_booking.room_service.model.entity.Room">
 
         SELECT
             id,

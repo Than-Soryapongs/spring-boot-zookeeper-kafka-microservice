@@ -1,7 +1,9 @@
-package com.room_booking.room_service.model.db;
+package com.room_booking.room_service.model.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.room_booking.room_service.model.enums.RoomStatus;
 
 public class Room {
     private long id;
@@ -11,7 +13,7 @@ public class Room {
     private BigDecimal pricePerNight;
     private String description;
     private String amenities;
-    private String status; // e.g., "available", "booked", "maintenance"
+    private RoomStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -36,8 +38,8 @@ public class Room {
     public String getAmenities() { return amenities; }
     public void setAmenities(String amenities) { this.amenities = amenities; }
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public RoomStatus getStatus() { return status; }
+    public void setStatus(RoomStatus status) { this.status = status; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

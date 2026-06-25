@@ -3,7 +3,7 @@ package com.room_booking.booking_service.kafka;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import com.room_booking.booking_service.model.db.BookingEvent;
+import com.room_booking.booking_service.model.entity.BookingEvent;
 
 @Component
 public class BookingEventProducer {
