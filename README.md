@@ -1,6 +1,6 @@
 # Microservices with Spring Boot and Kafka Demo Project [![Follow Me](https://img.shields.io/badge/Follow%20Me-Docs-blue?style=social)](https://github.com/Than-Soryapongs)
 
-[![CircleCI](https://circleci.com/gh/Than-Soryapongs/spring-boot-zookeeper-kafka-microservice.svg?style=svg)](https://circleci.com/gh/Than-Soryapongs/spring-boot-zookeeper-kafka-microservice)
+[![CircleCI](https://circleci.com/gh/Than-Soryapongs/spring-zookeeper-kafka-microservice.svg?style=svg)](https://circleci.com/gh/Than-Soryapongs/spring-zookeeper-kafka-microservice)
 
 This project is a Spring Boot microservices demo for a hotel room booking saga. It shows how booking, room inventory, and payment services coordinate through Kafka events and MySQL persistence.
 
