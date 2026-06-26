@@ -1,4 +1,10 @@
-# Sample Room Booking Microservices
+# Microservices with Spring Boot and Kafka Demo Project [![Follow Me](https://img.shields.io/badge/Follow%20Me-Docs-blue?style=social)](#documentation)
+
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)](#local-setup)
+[![SonarQube](https://img.shields.io/badge/sonarqube-passed-2ea44f)](#project-notes)
+[![Bugs](https://img.shields.io/badge/bugs-2-orange)](#project-notes)
+[![Coverage](https://img.shields.io/badge/coverage-0%25-lightgrey)](#project-notes)
+[![Lines of Code](https://img.shields.io/badge/lines%20of%20code-1k-lightgrey)](#project-notes)
 
 This project is a Spring Boot microservices demo for a hotel room booking saga. It shows how booking, room inventory, and payment services coordinate through Kafka events and MySQL persistence.
 
