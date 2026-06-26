@@ -4,8 +4,15 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/openjdk:17.0
+      - image: cimg/mysql:8.0          # MySQL sidecar
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: booking_db   # match your app's DB name
     steps:
       - checkout
+      - run:
+          name: Wait for MySQL
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 60s
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
