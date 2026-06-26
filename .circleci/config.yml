@@ -4,10 +4,10 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/openjdk:17.0
-      - image: cimg/mysql:8.0          # MySQL sidecar
+      - image: cimg/mysql:8.0
         environment:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: booking_db   # match your app's DB name
+          MYSQL_DATABASE: booking_db
     steps:
       - checkout
       - run:
