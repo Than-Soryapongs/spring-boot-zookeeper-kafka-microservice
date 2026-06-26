@@ -1,4 +1,4 @@
-# Microservices with Spring Boot and Kafka Demo Project [![Follow Me](https://github.com/Than-Soryapongs)]
+# Microservices with Spring Boot and Kafka Demo Project [![Follow Me](https://github.com/Than-Soryapongs)](#documentation)
 
 [![CircleCI](https://circleci.com/gh/Than-Soryapongs/spring-boot-zookeeper-kafka-microservice.svg?style=svg)](https://circleci.com/gh/Than-Soryapongs/spring-boot-zookeeper-kafka-microservice)
 
