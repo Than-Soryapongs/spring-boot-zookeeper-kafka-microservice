@@ -1,10 +1,10 @@
-package com.room_booking.notification_service;
+package com.room_booking.payment_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NotificationServiceApplicationTests {
+class PaymentServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

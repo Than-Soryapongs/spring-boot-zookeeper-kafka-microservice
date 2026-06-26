@@ -25,7 +25,8 @@ public class RoomEventConsumer {
 
     @KafkaListener(
             topics = "booking-created",
-            groupId = "room-service-group"
+            groupId = "room-service-group",
+            containerFactory = "bookingEventListenerFactory"
     )
     public void consumeBookingCreated(BookingEvent event) {
 
@@ -74,6 +75,21 @@ public class RoomEventConsumer {
 
         System.out.println("[Room Service] Room marked as RESERVED: " + event.getRoomId());
     }
+
+    @KafkaListener(
+        topics = "room-release",
+        groupId = "room-service-group",
+        containerFactory = "roomEventListenerFactory")
+        public void consumeRoomRelease(RoomEvent event) {
+
+            roomMapper.updateRoomStatus(
+                    event.getRoomId(),
+                    RoomStatus.AVAILABLE);
+
+            System.out.println(
+                    "[Room Service] Room released: "
+                            + event.getRoomId());
+        }
 
     // Helper to avoid repeating the same 2-field pattern for every failure branch
     private RoomEvent buildFailedEvent(BookingEvent source, String reason) {
