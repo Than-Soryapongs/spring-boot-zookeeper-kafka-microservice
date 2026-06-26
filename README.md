@@ -1,6 +1,6 @@
 # Sample Room Booking Microservices
 
-This project is a Spring Boot microservices demo for a hotel room booking saga. It shows how booking, room inventory, payment, and notification services coordinate through Kafka events and MySQL persistence.
+This project is a Spring Boot microservices demo for a hotel room booking saga. It shows how booking, room inventory, and payment services coordinate through Kafka events and MySQL persistence.
 
 ## Purpose
 
@@ -11,14 +11,12 @@ The application demonstrates an end-to-end room booking workflow:
 3. `payment-service` processes the payment decision.
 4. If payment succeeds, the booking is confirmed.
 5. If payment fails, the booking is cancelled and the room is released back to available inventory.
-6. `notification-service` records saga-related events for tracking and audit.
 
 The repository is organized as a Maven multi-module project with these services:
 
 - `booking-service` on port `8081`
 - `room-service` on port `8082`
 - `payment-service` on port `8083`
-- `notification-service` for event handling and notifications
 
 Supporting infrastructure is provided through Docker Compose:
 
@@ -89,27 +87,22 @@ sequenceDiagram
 	participant B as booking-service
 	participant R as room-service
 	participant P as payment-service
-	participant N as notification-service
 
 	U->>B: Create booking request
 	B->>R: booking-created
 	R->>R: Reserve room in inventory
 	R->>B: room-reserved
-	R->>N: room-related notification
 	B->>P: payment request / payment event
 	P->>P: Process payment
 
 	alt Payment succeeds
 		P->>B: payment-processed
 		B->>B: Mark booking CONFIRMED
-		B->>N: booking-confirmed notification
 	else Payment fails
 		P->>B: payment-failed
 		B->>B: Mark booking CANCELLED
 		B->>R: room-release compensation
 		R->>R: Mark room AVAILABLE
-		R->>N: room-released notification
-		B->>N: booking-rejected notification
 	end
 ```
 
